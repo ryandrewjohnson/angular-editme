@@ -10,6 +10,8 @@
     }
   },
   "devDependencies": {
-    "jspm": "^0.16.30"
+    "autoprefixer": "^6.3.5",
+    "jspm": "^0.16.30",
+    "postcss-cli-simple": "^1.0.1"
   }
 }

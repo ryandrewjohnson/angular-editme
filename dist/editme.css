@@ -1,0 +1,76 @@
+/*------------------------------------*\
+    #SHAKA EDITME
+\*------------------------------------*/
+
+sk-editme {
+  display: inherit;
+  position: relative;
+}
+
+sk-editme input.ng-invalid,
+sk-editme textarea.ng-invalid {
+  border-color: #a94442;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+sk-editme input.ng-invalid:focus,
+sk-editme textarea.ng-invalid:focus {
+  border-color: #843534;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;
+}
+
+
+
+sk-editme sk-editme-icon {
+  background-color: rgba(210, 210, 210, 0);
+  opacity: 0;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  -webkit-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+sk-editme sk-editme-icon.edit-active {
+  background-color: rgba(210, 210, 210, 1);
+  opacity: 1;
+}
+
+
+
+sk-editme .model-wrapper {
+  display: inline-block;
+  padding-right: 3rem;
+  position: relative;
+}
+sk-editme .model-wrapper.hide-icon {
+  padding-right: 0;
+}
+
+
+
+sk-editme .model-content {
+  display: inline-block;
+  background-color: rgba(210, 210, 210, 0);
+  padding: 0.3rem;
+  -webkit-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+sk-editme .model-content.edit-active {
+  cursor: pointer;
+  background-color: rgba(210, 210, 210, 1);
+}
+
+
+
+sk-editme sk-editme-icon svg {
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+  width: 1rem;
+  height: auto;
+}
