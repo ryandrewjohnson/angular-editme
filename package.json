@@ -26,6 +26,11 @@
     "test": "karma start karma.conf.js",
     "styles": "postcss --use autoprefixer src/editme.css -o dist/editme.css"
   },
+  "files": [
+    "dist/",
+    "src/",
+    "demo/"
+  ],
   "devDependencies": {
     "angular": "^1.5.3",
     "autoprefixer": "^6.3.5",
