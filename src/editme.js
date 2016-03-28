@@ -13,7 +13,7 @@
   else if (angular) {
     factory(root.angular);
   }
-}(this, function (angular) {
+}(window, function (angular) {
   'use strict';
 
   let m = angular.module('shaka-editme', []);
