@@ -33,11 +33,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var directive = {
       require: '^form',
       scope: {
-        model: '=',
         isEditing: '=?',
         hideIcon: '=?',
-        onEditChange: '&?',
-        onInvalid: '&?'
+        onStateChange: '&?',
+        onInvalid: '&?',
+        onChange: '&?'
       },
       controller: function controller($scope) {
         $scope.toggleEdit = function (value) {
@@ -58,7 +58,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var KEYS = {
         ENTER: 13
       };
+      var VALID_INPUT_TYPES = ['text', 'url', 'date', 'email', 'week', 'month', 'number', 'time'];
 
+      scope.isEditing = scope.isEditing || false;
       scope.showIcon = scope.showIcon || true;
 
       transclude(transcludeFn);
@@ -73,18 +75,60 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         scope.$apply();
       });
 
-      scope.$watch(function () {
-        return scope.isEditing;
-      }, onIsEditingChange);
-
       function transcludeFn(clone, innerScope) {
+        var inputTypePattern = new RegExp(VALID_INPUT_TYPES.join('|'), 'gi');
+
+        // This will ensure only valid elements are matched
         var input = Array.prototype.filter.call(clone, function (el) {
-          return el.nodeName.toLowerCase() === 'input' || el.nodeName.toLowerCase() === 'textarea';
+          var isInputEl = el.nodeName.toLowerCase() === 'input';
+          var isTextareaEl = el.nodeName.toLowerCase() === 'textarea';
+
+          if (isTextareaEl) {
+            return true;
+          }
+
+          if (isInputEl) {
+            var type = el.getAttribute('type') || '';
+            return type.search(inputTypePattern) > -1;
+          }
+
+          return false;
         });
 
         $input = angular.element(input);
 
+        if (!$input.length) {
+          throw new Error('skEditme could not find valid input or textarea element. Please see docs for valid element types.');
+        }
+
         $content.append($compile($input)(innerScope));
+
+        var ngModel = $input.controller('ngModel');
+
+        if (angular.isUndefined(ngModel)) {
+          throw new Error('skEditme transcluded element is missing required ng-model directive');
+        }
+
+        // ngModel.$modelView will be initialized as NaN
+        // This ensures we don't initiate our scope.model with NaN
+        var disconnect = scope.$watch(function () {
+          return ngModel.$modelValue;
+        }, function (value) {
+          // isNaN doesn't work see http://stackoverflow.com/questions/2652319/how-do-you-check-that-a-number-is-nan-in-javascript
+          var isNotNum = value !== value;
+
+          if (!isNotNum) {
+            scope.model = value;
+            scope.$watch(function () {
+              return scope.isEditing;
+            }, onIsEditingChange);
+            disconnect();
+          }
+        });
+
+        ngModel.$viewChangeListeners.push(function () {
+          return scope.model = ngModel.$modelValue;
+        });
       }
 
       function onIsEditingChange(value) {
@@ -97,8 +141,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           $input.off('blur keypress', validate);
         }
 
-        if (scope.onEditChange) {
-          scope.onEditChange({ isEditing: angular.copy(value) });
+        if (scope.onStateChange) {
+          scope.onStateChange({ isEditing: angular.copy(value) });
+        }
+
+        if (scope.onChange && value === false) {
+          scope.onChange({ value: angular.copy(scope.model) });
         }
       }
 

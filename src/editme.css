@@ -32,7 +32,7 @@ sk-editme sk-editme-icon {
   width: 2.3em;
   padding: 0.3em;
   text-indent: -9999px;
-  transition: all .5s ease-out;
+  transition: all .3s ease-out;
 }
 sk-editme sk-editme-icon.edit-active {
   background-color: rgba(210, 210, 210, 1);
@@ -56,7 +56,7 @@ sk-editme .model-content {
   display: inline-block;
   background-color: rgba(210, 210, 210, 0);
   padding: 0.3rem;
-  transition: all .5s ease-out;
+  transition: all .3s ease-out;
 }
 sk-editme .model-content.edit-active {
   cursor: pointer;
