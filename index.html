@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.iso.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/a448ca8e86365d752e4ce47652e2c5d4e8331770/dist/editme.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/9a2537419898193974370b364eba04666623df8f/dist/editme.css" media="screen">
     <!-- <link rel="stylesheet" type="text/css" href="stylesheets/editme.css" media="screen"> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <script src="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/a448ca8e86365d752e4ce47652e2c5d4e8331770/dist/editme.compiled.js"></script>
+    <script src="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/9a2537419898193974370b364eba04666623df8f/dist/editme.compiled.js"></script>
     <!-- <script src="scripts/editme.compiled.js"></script> -->
     <script src="scripts/app.js"></script>
   </head>
@@ -37,20 +37,74 @@
 
 
 
-    <div class="bootstrap-iso" ng-controller="DemoController as demo">
+      <div class="bootstrap-iso" ng-controller="DemoController as demo">
 
-      <form name="profile">
 
-        <div class="form-group">
-          <label>Password</label>
 
-          <sk-editme model="demo.lname">
-            <input type="text" class="form-control" placeholder="Last Name" name="lname" ng-model="demo.lname" ng-required="true">
-          </sk-editme>
+
+
+      <div class="media profile">
+        <h3>Edit Profile</h3>
+        <div class="media-left">
+          <a href="#" class="thumbnail">
+            <img src="images/donatello.jpg" width="355" height="327">
+          </a>
         </div>
-        <!--/.form-group-->
+        <!--/.media-left-->
 
-      </form>
+        <div class="media-body">
+          <form name="profile" class="container-fluid">
+
+            <div class="form-group row">
+              <sk-editme model="demo.fullname">
+                <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
+              </sk-editme>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <sk-editme model="demo.location">
+                <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
+              </sk-editme>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2">Current</label>
+              <div class="col-sm-10">
+                <sk-editme model="demo.curposition">
+                  <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
+                </sk-editme>
+              </div>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2">Previous</label>
+              <div class="col-sm-10">
+                <sk-editme model="demo.prevpostion">
+                  <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
+                </sk-editme>
+              </div>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2">Education</label>
+              <div class="col-sm-10">
+                <sk-editme model="demo.education">
+                  <input type="text" class="form-control" placeholder="Education" name="education" ng-model="demo.education" ng-required="true">
+                </sk-editme>
+              </div>
+            </div>
+            <!--/.form-group-->
+          </form>
+        </div>
+        <!--/.media-body-->
+      </div>
+      <!--/.media-->
+
+
 
       </div>
 

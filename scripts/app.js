@@ -5,8 +5,11 @@ angular.module('app', [
 .controller('DemoController', function() {
   let vm = this;
 
-  vm.fname = 'Ryan';
-  vm.lname = 'Johnson';
+  vm.fullname     = 'Donatello';
+  vm.location     = 'Greater New York City Area';
+  vm.curposition  = 'Full-time Ninja';
+  vm.prevpostion  = 'Pizza Delivery';
+  vm.education    = 'Home Schooled';
 
   vm.email = 'ryan@email.com';
   vm.city = 'Toronto';

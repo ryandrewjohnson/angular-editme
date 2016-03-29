@@ -1,0 +1,44 @@
+form {
+  font-size: 14px;
+}
+
+form label {
+  padding: 0.3em;
+}
+
+form .form-group {
+  margin-bottom: 10px !important;
+}
+.form-group-inline {
+  display: inline-block;
+}
+
+.thumbnail {
+  display: block;
+  width: 200px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.profile {
+  padding: 15px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+}
+
+.profile h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.bootstrap-iso sk-editme input.ng-invalid,
+.bootstrap-iso sk-editme textarea.ng-invalid {
+  border-color: #a94442;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.bootstrap-iso sk-editme input.ng-invalid:focus,
+.bootstrap-iso sk-editme textarea.ng-invalid:focus {
+  border-color: #843534;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;
+}
