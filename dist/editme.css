@@ -67,7 +67,7 @@ sk-editme .model-content.edit-active {
 
 sk-editme sk-editme-icon svg {
   display: block;
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   margin-top: -0.5em;
