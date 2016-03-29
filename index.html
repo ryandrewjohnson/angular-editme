@@ -10,12 +10,10 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.iso.css" media="screen">
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/9a2537419898193974370b364eba04666623df8f/dist/editme.css" media="screen">
-    <!-- <link rel="stylesheet" type="text/css" href="stylesheets/editme.css" media="screen"> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/9a2537419898193974370b364eba04666623df8f/dist/editme.compiled.js"></script>
-    <!-- <script src="scripts/editme.compiled.js"></script> -->
     <script src="scripts/app.js"></script>
   </head>
   <body ng-app="app">
@@ -28,85 +26,77 @@
     </section>
 
     <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
-
+      <h3>Edit your AngularJS forms inline ala LinkedIn profiles.</h3>
 
 
 
 
       <div class="bootstrap-iso" ng-controller="DemoController as demo">
+        <div class="profile container-fluid">
+          <div class="row">
+            <h3 class="col-sm-12">Edit Profile</h3>
+          </div>
+
+          <div class="row">
+            <a href="#" class="thumbnail col-sm-4">
+              <img src="images/donatello.jpg" width="355" height="327">
+            </a>
 
 
+            <div class="col-sm-8">
+            <form name="profile" class="container-fluid">
 
+              <div class="form-group row">
+                <sk-editme model="demo.fullname">
+                  <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
+                </sk-editme>
+              </div>
+              <!--/.form-group-->
 
+              <div class="form-group row">
+                <sk-editme model="demo.location">
+                  <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
+                </sk-editme>
+              </div>
+              <!--/.form-group-->
 
-      <div class="media profile">
-        <h3>Edit Profile</h3>
-        <div class="media-left">
-          <a href="#" class="thumbnail">
-            <img src="images/donatello.jpg" width="355" height="327">
-          </a>
+              <div class="form-group row">
+                <label class="control-label col-sm-2">Current</label>
+                <div class="col-sm-10">
+                  <sk-editme model="demo.curposition">
+                    <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
+                  </sk-editme>
+                </div>
+              </div>
+              <!--/.form-group-->
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2">Previous</label>
+                <div class="col-sm-10">
+                  <sk-editme model="demo.prevpostion">
+                    <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
+                  </sk-editme>
+                </div>
+              </div>
+              <!--/.form-group-->
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2">Education</label>
+                <div class="col-sm-10">
+                  <sk-editme model="demo.education">
+                    <input type="text" class="form-control" placeholder="Education" name="education" ng-model="demo.education" ng-required="true">
+                  </sk-editme>
+                </div>
+              </div>
+              <!--/.form-group-->
+            </form>
+          </div>
+          <!--/.col-sm-8-->
         </div>
-        <!--/.media-left-->
-
-        <div class="media-body">
-          <form name="profile" class="container-fluid">
-
-            <div class="form-group row">
-              <sk-editme model="demo.fullname">
-                <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
-              </sk-editme>
-            </div>
-            <!--/.form-group-->
-
-            <div class="form-group row">
-              <sk-editme model="demo.location">
-                <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
-              </sk-editme>
-            </div>
-            <!--/.form-group-->
-
-            <div class="form-group row">
-              <label class="control-label col-sm-2">Current</label>
-              <div class="col-sm-10">
-                <sk-editme model="demo.curposition">
-                  <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
-                </sk-editme>
-              </div>
-            </div>
-            <!--/.form-group-->
-
-            <div class="form-group row">
-              <label class="control-label col-sm-2">Previous</label>
-              <div class="col-sm-10">
-                <sk-editme model="demo.prevpostion">
-                  <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
-                </sk-editme>
-              </div>
-            </div>
-            <!--/.form-group-->
-
-            <div class="form-group row">
-              <label class="control-label col-sm-2">Education</label>
-              <div class="col-sm-10">
-                <sk-editme model="demo.education">
-                  <input type="text" class="form-control" placeholder="Education" name="education" ng-model="demo.education" ng-required="true">
-                </sk-editme>
-              </div>
-            </div>
-            <!--/.form-group-->
-          </form>
-        </div>
-        <!--/.media-body-->
+        <!--/.fluid-container-->
       </div>
-      <!--/.media-->
-
-
-
-      </div>
+      <!--/demo-->
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ryandrewjohnson/angular-editme">Angular-editme</a> is maintained by <a href="https://github.com/ryandrewjohnson">ryandrewjohnson</a>.</span>
