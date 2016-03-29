@@ -27,9 +27,22 @@
 
     <section class="main-content">
 
-      <h3>Edit your AngularJS forms inline ala LinkedIn profiles.</h3>
+      <h3>Edit your AngularJS forms inline ala LinkedIn profiles</h3>
+      <p>
+        To transform your existing <code>&lt;input&gt;</code> and
+        <code>&lt;textarea&gt;</code> elements into editable elements simply
+        wrap them with the <code>&lt;sk-editme model="value"&gt;&lt;/sk-editme&gt;</code> directive. Make sure
+        to set the <strong>model</strong> attribute to the same value as the
+        input/textarea element's <strong>ng-model</strong> attribute.
+      </p>
 
 
+      <h3>Demo</h3>
+      <ul>
+        <li>Hover over text items to see "editable" hint.</li>
+        <li>Click on text to enter edit mode.</li>
+        <li>Once editing is complete key ENTER/TAB or click outside element.</li>
+      </ul>
 
 
       <div class="bootstrap-iso" ng-controller="DemoController as demo">
@@ -95,8 +108,15 @@
           <!--/.col-sm-8-->
         </div>
         <!--/.fluid-container-->
+        </div>
+
       </div>
-      <!--/demo-->
+      <!--/.demo-->
+
+
+      <h3>Usage</h3>
+      <p>For details on installation and usage see the project <a href="https://github.com/ryandrewjohnson/angular-editme">README</a></p>
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ryandrewjohnson/angular-editme">Angular-editme</a> is maintained by <a href="https://github.com/ryandrewjohnson">ryandrewjohnson</a>.</span>
