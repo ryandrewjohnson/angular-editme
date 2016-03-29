@@ -27,8 +27,9 @@ sk-editme sk-editme-icon {
   position: absolute;
   top: 0;
   right: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.3em;
+  padding: 0.3em;
+  text-indent: -9999px;
   -webkit-transition: all .5s ease-out;
   transition: all .5s ease-out;
 }
@@ -41,7 +42,7 @@ sk-editme sk-editme-icon.edit-active {
 
 sk-editme .model-wrapper {
   display: inline-block;
-  padding-right: 3rem;
+  padding-right: 2.6em;
   position: relative;
 }
 sk-editme .model-wrapper.hide-icon {
@@ -69,8 +70,8 @@ sk-editme sk-editme-icon svg {
   position: relative;
   top: 50%;
   left: 50%;
-  margin-top: -0.5rem;
-  margin-left: -0.5rem;
-  width: 1rem;
+  margin-top: -0.5em;
+  margin-left: -0.5em;
+  width: 1em;
   height: auto;
 }
