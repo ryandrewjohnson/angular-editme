@@ -18,4 +18,15 @@ angular.module('app', ['shaka-editme']);
 
 #### Basic example:
 
-To ma
+```html
+<form name="demo">
+  ...
+  <sk-editme>
+    <input type="text" name="location" ng-model="locale" ng-required="true">
+  </sk-editme>
+  
+  <sk-editme>
+    <input type="text" name="description" ng-model="body" ng-required="true">
+  </sk-editme>
+</form>
+```
