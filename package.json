@@ -1,7 +1,7 @@
 {
   "name": "angular-editme",
-  "version": "0.0.0",
-  "description": "Description goes here.",
+  "version": "0.0.1",
+  "description": "Allows your AngularJS <input> and <textarea> elements to be edited inline ala LinkedIn profiles.",
   "repository": {
     "type": "git",
     "url": "https://github.com/ryandrewjohnson/angular-editme"
@@ -13,18 +13,25 @@
   },
   "keywords": [
     "angularjs",
-    "angular"
+    "angular",
+    "editme",
+    "sk-editme",
+    "forms",
+    "linkedin"
   ],
   "main": "dist/editme.compiled.js",
   "directories": {
     "lib": "src/"
   },
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean:demo": "rimraf demo/js/editme.demo.js && rimraf demo/css/editme.demo.css",
+    "clean": "rimraf dist/* && npm run clean:demo",
     "prebuild": "npm run clean",
+    "postbuild": "npm run copy:demo",
     "build": "babel src/editme.js -o dist/editme.compiled.js  --source-maps && npm run styles",
     "test": "karma start karma.conf.js",
-    "styles": "postcss --use autoprefixer src/editme.css -o dist/editme.css"
+    "styles": "postcss --use autoprefixer src/editme.css -o dist/editme.compiled.css",
+    "copy:demo": "cp dist/editme.compiled.js demo/js/editme.demo.js && cp dist/editme.compiled.css demo/css/editme.demo.css"
   },
   "files": [
     "dist/",

@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular-editme by ryandrewjohnson</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/editme.demo.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="js/editme.demo.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="app">
+
+    <div class="container">
+
+    <h3>Demo</h3>
+    <ul>
+      <li>Hover over text items to see "editable" hint.</li>
+      <li>Click on text to enter edit mode.</li>
+      <li>Once editing is complete key ENTER/TAB or click outside element.</li>
+    </ul>
+
+    <div ng-controller="DemoController as demo">
+      <div class="profile container-fluid">
+        <div class="row">
+          <h3 class="col-sm-12">Edit Profile</h3>
+        </div>
+
+        <div class="row">
+          <a href="#" class="thumbnail col-sm-4">
+            <img src="images/donatello.jpg" width="355" height="327">
+          </a>
+
+
+          <div class="col-sm-8">
+          <form name="profile" class="container-fluid">
+
+            <div class="form-group row">
+              <sk-editme model="demo.fullname">
+                <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
+              </sk-editme>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <sk-editme model="demo.location">
+                <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
+              </sk-editme>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2">Current</label>
+              <div class="col-sm-10">
+                <sk-editme model="demo.curposition">
+                  <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
+                </sk-editme>
+              </div>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2">Previous</label>
+              <div class="col-sm-10">
+                <sk-editme model="demo.prevpostion">
+                  <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
+                </sk-editme>
+              </div>
+            </div>
+            <!--/.form-group-->
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2">Education</label>
+              <div class="col-sm-10">
+                <sk-editme model="demo.education">
+                  <input type="text" class="form-control" placeholder="Education" name="education" ng-model="demo.education" ng-required="true">
+                </sk-editme>
+              </div>
+            </div>
+            <!--/.form-group-->
+          </form>
+        </div>
+        <!--/.col-sm-8-->
+      </div>
+      <!--/.fluid-container-->
+      </div>
+
+    </div>
+    <!--/.demo-->
+
+    </div>
+    <!--/.container-->
+
+  </body>
+</html>
