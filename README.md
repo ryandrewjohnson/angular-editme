@@ -4,7 +4,7 @@ Allows your AngularJS `<input>` and `<textarea>` elements to be edited inline al
 
 ## Demo
 
-Check out a working example on the [demo page]().
+Check out a working example on the [demo page](http://ryandrewjohnson.github.io/angular-editme/).
 
 ## Installation
 
@@ -14,7 +14,7 @@ Check out a working example on the [demo page]().
 
 ## Usage
 
-Add the `shaka-editme` as a dependency to your Angular app's main module:
+Add the `shaka-editme` module as a dependency to your Angular app's main module:
 
 ```javascript
 angular.module('app', ['shaka-editme']);
@@ -22,7 +22,7 @@ angular.module('app', ['shaka-editme']);
 
 #### Basic example
 
-To transform an existing form element into an editable element wrap it with the `<sk-editme>` directive. 
+To transform an existing input element into an editable element wrap it with the `<sk-editme>` directive. 
 
 ```html
 <form name="demo">
@@ -32,7 +32,7 @@ To transform an existing form element into an editable element wrap it with the 
   </sk-editme>
   
   <sk-editme>
-    <input type="text" name="description" ng-model="body" ng-required="true">
+    <textarea name="description" ng-model="body" ng-required="true"></textarea>
   </sk-editme>
 </form>
 ```
@@ -40,27 +40,27 @@ To transform an existing form element into an editable element wrap it with the 
 The `<sk-editme>` directive has the following requirements:
 
 * It must wrap a single `<textarea>` or `<input type="text|url|date|email|week|month|number|time">` element.
-* The element that it wraps must have a valid `ng-model` attirbute.
-* The directive has to be contained in a parent `<form>` element.
-* It's recommended that the wrapped element have a valid `name` attribute. This will help with validation.
+* The element wrapped element must have a valid `ng-model` attirbute.
+* The directive must have a parent `<form>` element.
+* It's recommended that the wrapped element have a unique `name` attribute - to help with validation.
 
 
 
 #### Handling invalid input
 
-A field in edit mode will remain in this state until a user enters a valid value. If a user enters an invalid or empty value the field will remain in edit mode until it passes validation. The validity of the field is governed by the `ngModel` validators of the wrapped element.
+An editable field in edit-state will remain so until a user enters a valid value. If a user enters an invalid or empty value the field will remain in the edit-state until a valid value is entered. The validity of the field is governed by the `ngModel` validators of the wrapped element.
 
 ##### Example:
 
-Will not exit edit mode until valid email is entered.
+Will validate user has entered valid email before exiting edit-state.
 
 ```html
 <sk-editme>
-  <input type="email" name="email" ng-model="email">
+  <input type="email" name="email" ng-model="email" ng-required="true">
 </sk-editme>
 ```
 
-Will not exit edit mode until only numbers entered.
+Will validate user has entered only numbers before exiting edit-state.
 
 ```html
 <sk-editme>
@@ -77,7 +77,7 @@ Given markup styled with [Bootstrap](http://getbootstrap.com/css/#forms-control-
 index.html
 ```html
 <!-- 
-  on-change - will be triggered when input loses focus and the value is valid
+  on-change - will be triggered when input loses focus and the value is both changed and valid.
   on-invalid - will be triggered when input loses focus and the value is invalid
 -->
 <div ng-controller="DemoController as demo">
@@ -99,7 +99,8 @@ demo.controller.js
   vm.isInvalid = false;
   
   /**
-   * The value arg will be the valid value from the input
+   * The value arg will be the current valid value from the input. 
+   * (same as vm.email in this case)
    */
   vm.onChange = (value) => {
     vm.isInvalid = false;
@@ -107,7 +108,7 @@ demo.controller.js
   };
   
   /**
-   * The $error arg will be the element's ngModel $error object
+   * The $error arg will be the input's ngModel $error object
    * See $error in https://docs.angularjs.org/api/ng/type/form.FormController
    */
   vm.onInvalid = ($error) => {
@@ -136,7 +137,7 @@ All properties are optional.
 | ------------- |:---------------------| -------------| ------------|
 | isEditing     | Boolean              | Can be set to true if you want to start in edit mode | false
 | hideIcon      | Boolean              |  Will hide pencil icon if set to true | false
-| onChange      | Expression(Function) | Expression will be evaluated when input loses focus and the entered value is valid. The valid value is available as $value. | –
+| onChange      | Expression(Function) | Expression will be evaluated when input loses focus and the entered value is both changed and valid. The valid value is available as $value. | –
 | onInvalid     | Expression(Function) | Expression will be evaluated when input loses focus and the entered value is invalid. The ngModel error is available as $error. | –
 | onStateChange | Expression(Function) | Expression will be evaluated when the directive changes to and from edit mode. A Boolean value $isEditing is availble to determine the current state. | –
 
