@@ -28,7 +28,7 @@
         <path d="M30.173 7.542l-0.314 0.314-5.726-5.729 0.313-0.313c0 0 1.371-1.813 3.321-1.813 0.859 0 1.832 0.353 2.849 1.37 3.354 3.354-0.443 6.171-0.443 6.171zM27.979 9.737l-19.499 19.506-8.48 2.757 2.756-8.485v-0.003h0.002l19.496-19.505 0.252 0.253zM2.76 29.239l4.237-1.219-2.894-3.082-1.343 4.301z"></path>
       </svg>
     `
-  });
+  })
 
 
   m.directive('skEditme', ($compile, $timeout) => {
@@ -64,13 +64,13 @@
     function link(scope, element, attrs, formCtrl, transclude) {
       let $content  = element.find('content');
       let $input    = undefined;
+      let prevValue = undefined;
       let $static   = angular.element(element[0].querySelector('.model-content'));
       const KEYS    = {
         ENTER: 13
       };
       const VALID_INPUT_TYPES = ['text', 'url', 'date', 'email', 'week', 'month', 'number', 'time'];
 
-      scope.isEditing = scope.isEditing || false;
       scope.showIcon  = scope.showIcon || true;
 
       transclude(transcludeFn);
@@ -107,7 +107,7 @@
 
         $input = angular.element(input);
 
-        if (!$input.length) {
+        if (!$input.length || $input.length > 1) {
           throw new Error('skEditme could not find valid input or textarea element. Please see docs for valid element types.');
         }
 
@@ -118,6 +118,7 @@
         if (angular.isUndefined(ngModel)) {
           throw new Error('skEditme transcluded element is missing required ng-model directive');
         }
+        //throw error/warning if invalid element provided
 
         // ngModel.$modelView will be initialized as NaN
         // This ensures we don't initiate our scope.model with NaN
@@ -132,24 +133,30 @@
           }
         });
 
-        ngModel.$viewChangeListeners.push(() => scope.model = ngModel.$modelValue);
+        ngModel.$viewChangeListeners.push(() => {
+          scope.model = ngModel.$modelValue
+        });
       }
 
       function onIsEditingChange(value) {
         if (value) {
           $timeout(() => $input[0].focus());
+          prevValue = angular.copy(scope.model);
           $input.on('blur keypress', validate);
         }
         else {
           $input.off('blur keypress', validate);
         }
 
-        if (scope.onStateChange) {
-          scope.onStateChange({isEditing: angular.copy(value)});
+        if (scope.onStateChange && value !== undefined) {
+          scope.onStateChange({$isEditing: angular.copy(value)});
         }
 
-        if (scope.onChange && value === false) {
-          scope.onChange({value: angular.copy(scope.model)});
+        if (scope.onChange &&
+            value === false &&
+            prevValue !== undefined &&
+            prevValue !== scope.model) {
+          scope.onChange({$value: angular.copy(scope.model)});
         }
       }
 
