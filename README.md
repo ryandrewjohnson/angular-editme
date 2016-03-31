@@ -41,8 +41,6 @@ The `<sk-editme>` directive has the following requirements:
 
 * It must wrap a single `<textarea>` or `<input type="text|url|date|email|week|month|number|time">` element.
 * The element wrapped element must have a valid `ng-model` attirbute.
-* The directive must have a parent `<form>` element.
-* It's recommended that the wrapped element have a unique `name` attribute - to help with validation.
 
 
 
