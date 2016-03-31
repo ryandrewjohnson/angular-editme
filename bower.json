@@ -1,0 +1,40 @@
+{
+  "name": "angular-editme",
+  "homepage": "http://ryandrewjohnson.github.io/angular-editme/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryandrewjohnson/angular-editme"
+  },
+  "authors": [
+    "ryanjohnson <ryan@shakainteractive.com>"
+  ],
+  "description": "Allows your AngularJS <input> and <textarea> elements to be edited inline ala LinkedIn profiles",
+  "main": [
+    "dist/editme.compiled.js",
+    "dist/editme.compiled.css"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "angularjs",
+    "angular",
+    "editme",
+    "sk-editme",
+    "forms",
+    "linkedin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3"
+  }
+}
