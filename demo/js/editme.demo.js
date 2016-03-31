@@ -26,12 +26,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    * Component wrapper for SVG edit icon
    */
   m.component('skEditmeIcon', {
-    template: '\n      edit-icon\n      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">\n        <path d="M30.173 7.542l-0.314 0.314-5.726-5.729 0.313-0.313c0 0 1.371-1.813 3.321-1.813 0.859 0 1.832 0.353 2.849 1.37 3.354 3.354-0.443 6.171-0.443 6.171zM27.979 9.737l-19.499 19.506-8.48 2.757 2.756-8.485v-0.003h0.002l19.496-19.505 0.252 0.253zM2.76 29.239l4.237-1.219-2.894-3.082-1.343 4.301z"></path>\n      </svg>\n    '
+    template: '\n      <div class="icon-wrapper">\n        edit-icon\n        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">\n          <path d="M30.173 7.542l-0.314 0.314-5.726-5.729 0.313-0.313c0 0 1.371-1.813 3.321-1.813 0.859 0 1.832 0.353 2.849 1.37 3.354 3.354-0.443 6.171-0.443 6.171zM27.979 9.737l-19.499 19.506-8.48 2.757 2.756-8.485v-0.003h0.002l19.496-19.505 0.252 0.253zM2.76 29.239l4.237-1.219-2.894-3.082-1.343 4.301z"></path>\n        </svg>\n      </div>\n    '
   });
 
   m.directive('skEditme', function ($compile, $timeout) {
     var directive = {
-      require: '^form',
       scope: {
         isEditing: '=?',
         hideIcon: '=?',
@@ -51,9 +50,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     return directive;
 
-    function link(scope, element, attrs, formCtrl, transclude) {
+    function link(scope, element, attrs, ctrl, transclude) {
       var $content = element.find('content');
       var $input = undefined;
+      var ngModel = undefined;
       var prevValue = undefined;
       var $static = angular.element(element[0].querySelector('.model-content'));
       var KEYS = {
@@ -103,7 +103,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         $content.append($compile($input)(innerScope));
 
-        var ngModel = $input.controller('ngModel');
+        ngModel = $input.controller('ngModel');
 
         if (angular.isUndefined(ngModel)) {
           throw new Error('skEditme transcluded element is missing required ng-model directive');
@@ -159,18 +159,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         var isEditing = false;
         var isModelEmpty = angular.isDefined(scope.model) ? scope.model.search(/\w+/g) < 0 : true;
-        var inputCtrl = formCtrl[$input.attr('name')];
 
-        if (inputCtrl) {
-          isEditing = inputCtrl.$invalid;
-
-          if (inputCtrl.$invalid && scope.onInvalid) {
-            scope.onInvalid({ $error: angular.copy(inputCtrl.$error) });
-          }
-        }
-
-        // if model is empty should not be allowed to exit edit mode
-        isEditing = isModelEmpty ? true : isEditing;
+        isEditing = isModelEmpty ? true : ngModel.$ivalid && ngModel.$dirty;
 
         scope.isEditing = isEditing;
         scope.$apply();

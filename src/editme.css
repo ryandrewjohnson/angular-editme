@@ -22,28 +22,9 @@ sk-editme textarea.ng-invalid:focus {
 
 
 
-sk-editme sk-editme-icon {
-  background-color: rgba(210, 210, 210, 0);
-  opacity: 0;
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2.3em;
-  padding: 0.3em;
-  text-indent: -9999px;
-  transition: all .3s ease-out;
-}
-sk-editme sk-editme-icon.edit-active {
-  background-color: rgba(210, 210, 210, 1);
-  opacity: 1;
-}
-
-
-
 sk-editme .model-wrapper {
   display: inline-block;
-  padding-right: 2.6em;
+  padding-right: 1em;
   position: relative;
 }
 sk-editme .model-wrapper.hide-icon {
@@ -54,24 +35,78 @@ sk-editme .model-wrapper.hide-icon {
 
 sk-editme .model-content {
   display: inline-block;
-  background-color: rgba(210, 210, 210, 0);
-  padding: 0.3rem;
+  position: relative;
+}
+sk-editme .model-content::after {
+  position: absolute;
+  background-color: #e0e0e0;
+  box-sizing: content-box;
+  border: 2px solid #e0e0e0;
+  content: "";
+  top: -2px;
+  left: -2px;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
   transition: all .3s ease-out;
 }
 sk-editme .model-content.edit-active {
   cursor: pointer;
-  background-color: rgba(210, 210, 210, 1);
+}
+sk-editme .model-content.edit-active::after {
+  opacity: 1;
 }
 
 
+
+sk-editme sk-editme-icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -12px;
+}
+sk-editme sk-editme-icon::after {
+  background-color: #e0e0e0;
+  border-top: 2px solid #e0e0e0;
+  border-bottom: 2px solid #e0e0e0;
+  border-left: 5px solid #e0e0e0;
+  border-right: 5px solid #e0e0e0;
+  box-sizing: content-box;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all .3s ease-out;
+}
+sk-editme sk-editme-icon.edit-active::after {
+  opacity: 1;
+}
+
+sk-editme .icon-wrapper {
+  width: 1em;
+  text-indent: -9999px;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 sk-editme sk-editme-icon svg {
   display: block;
   position: absolute;
+  width: 0.9em;
+  height: auto;
   top: 50%;
   left: 50%;
-  margin-top: -0.5em;
-  margin-left: -0.5em;
-  width: 1em;
-  height: auto;
+  margin-top: -0.45em;
+  margin-left: -0.4em;
+  opacity: 0;
+  transition: all .3s ease-out;
 }
+sk-editme sk-editme-icon.edit-active svg {
+  opacity: 1;
+}
+
