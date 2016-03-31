@@ -32,7 +32,9 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "karma.conf.js",
+    "demo"
   ],
   "dependencies": {
     "angular": "^1.5.0"
