@@ -1,6 +1,6 @@
 # angular-editme
 
-Convert your AngularJS `<input>` and `<textarea>` elements to be edited inline ala [LinkedIn profiles](https://www.linkedin.com/).
+Convert your AngularJS input and textarea elements to be edited inline ala [LinkedIn profiles](https://www.linkedin.com/).
 
 ![alt text](https://raw.githubusercontent.com/ryandrewjohnson/angular-editme/master/demo/images/angular-editme.gif "angular-editme demo gif")
 
