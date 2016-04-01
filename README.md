@@ -1,6 +1,6 @@
 # angular-editme
 
-Allows your AngularJS `<input>` and `<textarea>` elements to be edited inline ala [LinkedIn profiles](https://www.linkedin.com/).
+Convert your AngularJS `<input>` and `<textarea>` elements to be edited inline ala [LinkedIn profiles](https://www.linkedin.com/).
 
 ## Demo
 
