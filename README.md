@@ -8,21 +8,39 @@ Check out a working example on the [demo page](http://ryandrewjohnson.github.io/
 
 ## Installation
 
-* install npm
-* install bower
-* install jspm
+* `npm install angular-editme` or
+* `bower install angular-editme` or
+* `jspm install npm:angular-editme` or
+* Download and add to your html file
 
 ## Usage
 
 Add the `shaka-editme` module as a dependency to your Angular app's main module:
 
+##### Installed with global:
+
 ```javascript
 angular.module('app', ['shaka-editme']);
 ```
 
+##### Installed with npm:
+
+```javascript
+let angular = require('angular');
+angular.module('app', [require('angular-editme')]);
+```
+
+##### Installed with jspm:
+
+```javascript
+import editme from 'angular-editme';
+angular.module('app', [editme]);
+```
+
+
 #### Basic example
 
-To transform an existing input element into an editable element wrap it with the `<sk-editme>` directive. 
+To convert an existing input element into an editable element wrap it with the `<sk-editme>` directive.
 
 ```html
 <form name="demo">
@@ -30,7 +48,7 @@ To transform an existing input element into an editable element wrap it with the
   <sk-editme>
     <input type="text" name="location" ng-model="locale" ng-required="true">
   </sk-editme>
-  
+
   <sk-editme>
     <textarea name="description" ng-model="body" ng-required="true"></textarea>
   </sk-editme>
@@ -74,7 +92,7 @@ Given markup styled with [Bootstrap](http://getbootstrap.com/css/#forms-control-
 
 index.html
 ```html
-<!-- 
+<!--
   on-change - will be triggered when input loses focus and the value is both changed and valid.
   on-invalid - will be triggered when input loses focus and the value is invalid
 -->
@@ -92,19 +110,19 @@ demo.controller.js
 ```javascript
 .controller('DemoController', function(userService) {
   let vm = this;
-  
+
   vm.email = 'myemail@email.com';
   vm.isInvalid = false;
-  
+
   /**
-   * The value arg will be the current valid value from the input. 
+   * The value arg will be the current valid value from the input.
    * (same as vm.email in this case)
    */
   vm.onChange = (value) => {
     vm.isInvalid = false;
     userService.saveEmail(value);
   };
-  
+
   /**
    * The $error arg will be the input's ngModel $error object
    * See $error in https://docs.angularjs.org/api/ng/type/form.FormController
