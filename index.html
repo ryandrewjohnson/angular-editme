@@ -8,7 +8,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.iso.css" media="screen">
+    <!-- <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.iso.css" media="screen"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/editme.compiled.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
 
@@ -33,11 +34,9 @@
 
       <h3>Edit your AngularJS forms inline ala LinkedIn profiles</h3>
       <p>
-        To transform your existing <code>&lt;input&gt;</code> and
+        To convert your existing <code>&lt;input&gt;</code> and
         <code>&lt;textarea&gt;</code> elements into editable elements simply
-        wrap them with the <code>&lt;sk-editme model="value"&gt;&lt;/sk-editme&gt;</code> directive. Make sure
-        to set the <strong>model</strong> attribute to the same value as the
-        input/textarea element's <strong>ng-model</strong> attribute.
+        wrap them with the <code>&lt;sk-editme&gt;</code> directive.
       </p>
 
 
@@ -51,7 +50,7 @@
       <div class="bootstrap-iso" ng-controller="DemoController as demo">
         <div class="profile container-fluid">
           <div class="row">
-            <h3 class="col-sm-12">Edit Profile</h3>
+            <h2 class="col-sm-12">Edit Profile</h2>
           </div>
 
           <div class="row">
@@ -118,6 +117,7 @@
         <p>The static text that is displayed when not in the edit-state inherits the styles from it's parent.
         This means you can influence the styling of the static text by wrapping it another element like the examples below.</p>
 
+        <div class="heading-demo">
         <h1 class="form-group">
           <sk-editme>
             <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h1" ng-required="true">
@@ -135,6 +135,7 @@
             <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.p" ng-required="true">
           </sk-editme>
         </p>
+        </div>
 
         <h3>You can use textarea's too</h3>
 

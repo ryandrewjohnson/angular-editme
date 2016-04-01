@@ -2,23 +2,22 @@ form {
   font-size: 14px;
 }
 
-form label {
-  padding: 0.3em;
-}
-
-form .form-group {
-  margin-bottom: 10px !important;
-}
-
 .profile {
   border: 1px solid #CCC;
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
 }
 
-.profile h3 {
+.profile h2 {
+  color: #333 !important;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.heading-demo h1,
+.heading-demo h2,
+.heading-demo p {
+  color: #333 !important;
 }
 
 .bootstrap-iso sk-editme input.ng-invalid,
