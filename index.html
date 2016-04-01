@@ -9,14 +9,16 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.iso.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/2fcd197698c2ecfba5bb5a5c00d57f03cb3a63b5/dist/editme.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/editme.compiled.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <script src="https://cdn.rawgit.com/ryandrewjohnson/angular-editme/2fcd197698c2ecfba5bb5a5c00d57f03cb3a63b5/dist/editme.compiled.js"></script>
-    <script src="scripts/app.js"></script>
+    <script src="scripts/app.bundle.js"></script>
   </head>
+
   <body ng-app="app">
+
+
+
     <section class="page-header">
       <h1 class="project-name">Angular-editme</h1>
       <h2 class="project-tagline"></h2>
@@ -24,6 +26,8 @@
       <a href="https://github.com/ryandrewjohnson/angular-editme/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/ryandrewjohnson/angular-editme/tarball/master" class="btn">Download .tar.gz</a>
     </section>
+
+
 
     <section class="main-content">
 
@@ -44,7 +48,6 @@
         <li>Once editing is complete key ENTER/TAB or click outside element.</li>
       </ul>
 
-
       <div class="bootstrap-iso" ng-controller="DemoController as demo">
         <div class="profile container-fluid">
           <div class="row">
@@ -61,14 +64,14 @@
             <form name="profile" class="container-fluid">
 
               <div class="form-group row">
-                <sk-editme model="demo.fullname">
+                <sk-editme>
                   <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
                 </sk-editme>
               </div>
               <!--/.form-group-->
 
               <div class="form-group row">
-                <sk-editme model="demo.location">
+                <sk-editme>
                   <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
                 </sk-editme>
               </div>
@@ -77,7 +80,7 @@
               <div class="form-group row">
                 <label class="control-label col-sm-2">Current</label>
                 <div class="col-sm-10">
-                  <sk-editme model="demo.curposition">
+                  <sk-editme on-change="demo.onChange($value, 'current')" on-invalid="demo.onInvalid($error, 'current')">
                     <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
                   </sk-editme>
                 </div>
@@ -87,7 +90,7 @@
               <div class="form-group row">
                 <label class="control-label col-sm-2">Previous</label>
                 <div class="col-sm-10">
-                  <sk-editme model="demo.prevpostion">
+                  <sk-editme>
                     <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
                   </sk-editme>
                 </div>
@@ -97,8 +100,8 @@
               <div class="form-group row">
                 <label class="control-label col-sm-2">Education</label>
                 <div class="col-sm-10">
-                  <sk-editme model="demo.education">
-                    <input type="text" class="form-control" placeholder="Education" name="education" ng-model="demo.education" ng-required="true">
+                  <sk-editme>
+                    <input type="text" class="form-control" placeholder="Education" name="test" ng-model="demo.education" ng-required="true">
                   </sk-editme>
                 </div>
               </div>
@@ -110,22 +113,52 @@
         <!--/.fluid-container-->
         </div>
 
+        <h3>More editable fields</h3>
+
+        <p>The static text that is displayed when not in the edit-state inherits the styles from it's parent.
+        This means you can influence the styling of the static text by wrapping it another element like the examples below.</p>
+
+        <h1 class="form-group">
+          <sk-editme>
+            <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h1" ng-required="true">
+          </sk-editme>
+        </h1>
+
+        <h2 class="form-group">
+          <sk-editme>
+            <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h2" ng-required="true">
+          </sk-editme>
+        </h2>
+
+        <p class="form-group">
+          <sk-editme>
+            <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.p" ng-required="true">
+          </sk-editme>
+        </p>
+
+        <h3>You can use textarea's too</h3>
+
+        <div class="form-group">
+          <sk-editme>
+            <textarea class="form-control" rows="8" ng-model="demo.desc" ng-required="true"></textarea>
+          </sk-editme>
+        </div>
+
       </div>
       <!--/.demo-->
+
 
 
       <h3>Usage</h3>
       <p>For details on installation and usage see the project <a href="https://github.com/ryandrewjohnson/angular-editme">README</a></p>
 
 
+
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ryandrewjohnson/angular-editme">Angular-editme</a> is maintained by <a href="https://github.com/ryandrewjohnson">ryandrewjohnson</a>.</span>
-
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
     </section>
-
-
   </body>
 </html>

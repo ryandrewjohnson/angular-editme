@@ -1,2 +1,4 @@
 node_modules
 example
+bower_components
+jspm_packages

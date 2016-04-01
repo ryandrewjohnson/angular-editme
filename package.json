@@ -1,0 +1,15 @@
+{
+  "name": "angular-editme-demo",
+  "version": "1.0.0",
+  "description": "Demo site for angular-editme",
+  "dependencies": {
+    "angular-editme": "^0.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "prebuild": "npm update",
+    "build": "browserify scripts/app.js -o scripts/app.bundle.js && cp node_modules/angular-editme/dist/editme.compiled.css stylesheets/editme.compiled.css"
+  },
+  "author": "Ryan Johnson <ryan@shakainteractive.com> (http://shakainteractive.com/)",
+  "license": "MIT"
+}
