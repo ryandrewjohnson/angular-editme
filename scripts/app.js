@@ -3,7 +3,7 @@ var angular = require('angular');
 angular.module('app', [require('angular-editme')])
 
 .controller('DemoController', function() {
-  let vm = this;
+  var vm = this;
 
   vm.fullname     = 'Donatello';
   vm.location     = 'Greater New York City Area';
@@ -19,11 +19,11 @@ angular.module('app', [require('angular-editme')])
   vm.h2 = 'Wrapped with <h2> tag';
   vm.p = 'Wrapped with <p> tag';
 
-  vm.onInvalid = ($error, type) => {
+  vm.onInvalid = function($error, type) {
     console.log('on invalid', $error, type);
   }
 
-  vm.onChange = ($error) => {
+  vm.onChange = function($error) {
     console.log('error', $error);
   }
 });
