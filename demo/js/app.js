@@ -5,7 +5,7 @@ angular.module('app', [
 ])
 
 .controller('DemoController', function() {
-  let vm = this;
+  var vm = this;
 
   vm.fullname     = 'Donatello';
   vm.location     = 'Greater New York City Area';
@@ -21,11 +21,11 @@ angular.module('app', [
   vm.h2 = 'Wrapped with <h2> tag';
   vm.p = 'Wrapped with <p> tag';
 
-  vm.testing = (isEditing) => {
+  vm.testing = function(isEditing) {
     console.log('edit state change', isEditing);
   }
 
-  vm.errorCheck = ($error) => {
+  vm.errorCheck = function($error) {
     console.log('error', $error);
   }
 });
