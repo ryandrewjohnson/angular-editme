@@ -56,6 +56,9 @@ sk-editme .model-content.edit-active {
 sk-editme .model-content.edit-active::after {
   opacity: 1;
 }
+sk-editme .editme-touch .model-content.edit-active::after {
+  opacity: 0;
+}
 
 
 
@@ -86,6 +89,9 @@ sk-editme sk-editme-icon::after {
 sk-editme sk-editme-icon.edit-active::after {
   opacity: 1;
 }
+sk-editme .editme-touch sk-editme-icon.edit-active::after {
+  opacity: 0;
+}
 
 sk-editme .icon-wrapper {
   width: 1em;
@@ -98,7 +104,7 @@ sk-editme sk-editme-icon svg {
   display: block;
   position: absolute;
   width: 0.9em;
-  height: auto;
+  height: 1em;
   top: 50%;
   left: 50%;
   margin-top: -0.45em;
@@ -109,5 +115,8 @@ sk-editme sk-editme-icon svg {
 }
 sk-editme sk-editme-icon.edit-active svg {
   opacity: 1;
+}
+sk-editme .editme-touch sk-editme-icon.edit-active svg {
+  opacity: 0;
 }
 

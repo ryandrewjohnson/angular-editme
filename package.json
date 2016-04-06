@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Demo site for angular-editme",
   "dependencies": {
-    "angular-editme": "^0.2.2"
+    "angular-editme": "^1.0.3"
   },
   "devDependencies": {},
   "scripts": {

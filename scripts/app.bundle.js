@@ -46,7 +46,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       },
       link: link,
       transclude: true,
-      template: '\n        <div ng-click="toggleEdit(true)">\n          <span ng-hide="isEditing" class="model-wrapper" ng-class="{\'hide-icon\': hideIcon}">\n            <span class="model-content" ng-class="{\'edit-active\': showEditHint}">{{model}}</span>\n            <sk-editme-icon ng-class="{\'edit-active\': showEditHint}" ng-if="!isEditing && !hideIcon"></sk-editme-icon>\n          </span>\n          <content ng-show="isEditing"></content>\n        </div>\n      '
+      template: '\n        <div ng-click="toggleEdit(true)" ng-class="{\'editme-touch\': isTouchEnabled}">\n          <span ng-hide="isEditing" class="model-wrapper" ng-class="{\'hide-icon\': hideIcon}">\n            <span class="model-content" ng-class="{\'edit-active\': showEditHint}">{{model}}</span>\n            <sk-editme-icon ng-class="{\'edit-active\': showEditHint}" ng-if="!isEditing && !hideIcon"></sk-editme-icon>\n          </span>\n          <content ng-show="isEditing"></content>\n        </div>\n      '
     };
 
     return directive;
@@ -61,6 +61,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         ENTER: 13
       };
       var VALID_INPUT_TYPES = ['text', 'url', 'date', 'email', 'week', 'month', 'number', 'time'];
+
+      if ('ontouchstart' in document.documentElement) {
+        scope.isTouchEnabled = true;
+      }
 
       scope.showIcon = scope.showIcon || true;
 
