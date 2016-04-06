@@ -50,7 +50,7 @@
       link: link,
       transclude: true,
       template: `
-        <div ng-click="toggleEdit(true)">
+        <div ng-click="toggleEdit(true)" ng-class="{'editme-touch': isTouchEnabled}">
           <span ng-hide="isEditing" class="model-wrapper" ng-class="{'hide-icon': hideIcon}">
             <span class="model-content" ng-class="{'edit-active': showEditHint}">{{model}}</span>
             <sk-editme-icon ng-class="{'edit-active': showEditHint}" ng-if="!isEditing && !hideIcon"></sk-editme-icon>
@@ -72,6 +72,10 @@
         ENTER: 13
       };
       const VALID_INPUT_TYPES = ['text', 'url', 'date', 'email', 'week', 'month', 'number', 'time'];
+
+      if ('ontouchstart' in document.documentElement) {
+        scope.isTouchEnabled = true;
+      }
 
       scope.showIcon  = scope.showIcon || true;
 

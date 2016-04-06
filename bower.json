@@ -8,7 +8,7 @@
   "authors": [
     "ryanjohnson <ryan@shakainteractive.com>"
   ],
-  "description": "Convert your AngularJS <input> and <textarea> elements to be edited inline ala LinkedIn profiles",
+  "description": "Convert your AngularJS input and textarea elements to be edited inline ala LinkedIn profiles",
   "main": [
     "dist/editme.compiled.js",
     "dist/editme.compiled.css"
