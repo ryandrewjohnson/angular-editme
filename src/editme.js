@@ -174,7 +174,7 @@
         let isEditing      = false;
         let isModelEmpty   = angular.isDefined(scope.model) ? (scope.model.search(/\w+/g) < 0) : true;
 
-        isEditing = isModelEmpty ? true : (ngModel.$ivalid && ngModel.$dirty);
+        isEditing = isModelEmpty ? true : (ngModel.$invalid && ngModel.$dirty);
 
         scope.isEditing = isEditing;
         scope.$apply();
