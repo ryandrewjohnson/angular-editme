@@ -51,13 +51,13 @@ sk-editme .model-content::after {
   z-index: -1;
   transition: all .3s ease-out;
 }
-sk-editme .model-content.edit-active {
+sk-editme:hover .model-content {
   cursor: pointer;
 }
-sk-editme .model-content.edit-active::after {
+sk-editme:hover .model-content::after {
   opacity: 1;
 }
-sk-editme .editme-touch .model-content.edit-active::after {
+sk-editme:hover .editme-touch .model-content::after {
   opacity: 0;
 }
 
@@ -68,6 +68,9 @@ sk-editme sk-editme-icon {
   position: absolute;
   top: 0;
   right: -12px;
+}
+sk-editme:hover sk-editme-icon {
+  cursor: pointer;
 }
 sk-editme sk-editme-icon::after {
   background-color: #e0e0e0;
@@ -86,10 +89,10 @@ sk-editme sk-editme-icon::after {
   z-index: -1;
   transition: all .3s ease-out;
 }
-sk-editme sk-editme-icon.edit-active::after {
+sk-editme:hover sk-editme-icon::after {
   opacity: 1;
 }
-sk-editme .editme-touch sk-editme-icon.edit-active::after {
+sk-editme:hover .editme-touch sk-editme-icon::after {
   opacity: 0;
 }
 
@@ -112,10 +115,10 @@ sk-editme sk-editme-icon svg {
   opacity: 0;
   transition: all .3s ease-out;
 }
-sk-editme sk-editme-icon.edit-active svg {
+sk-editme:hover sk-editme-icon svg {
   opacity: 1;
 }
-sk-editme .editme-touch sk-editme-icon.edit-active svg {
+sk-editme:hover .editme-touch sk-editme-icon svg {
   opacity: 0;
 }
 

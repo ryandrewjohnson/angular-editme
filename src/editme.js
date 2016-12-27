@@ -56,8 +56,8 @@
       template: `
         <div ng-click="toggleEdit(true)" ng-class="{'editme-touch': isTouchEnabled}">
           <span ng-hide="isEditing" class="model-wrapper" ng-class="{'hide-icon': hideIcon}">
-            <sk-editme-icon ng-class="{'edit-active': showEditHint}" ng-if="!isEditing && !hideIcon"></sk-editme-icon>
             <span class="model-content" ng-transclude="static">{{model}}</span>
+            <sk-editme-icon ng-if="!isEditing && !hideIcon"></sk-editme-icon>
           </span>
           <div ng-transclude="editable" ng-show="isEditing"></div>
         </div>
@@ -91,17 +91,6 @@
 
       scope.showIcon  = scope.showIcon || true;
       scope.allowEnterKey = scope.allowEnterKey || false;
-
-
-      $static.on('mouseover', () => {
-        scope.showEditHint = true;
-        scope.$apply();
-      });
-
-      $static.on('mouseout', () => {
-        scope.showEditHint = false;
-        scope.$apply();
-      });
 
       $timeout(() => {
         // This will ensure only valid elements are matched
