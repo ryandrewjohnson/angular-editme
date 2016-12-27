@@ -41,14 +41,19 @@
 
             <div class="form-group row">
               <sk-editme>
-                <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
+                <static><b ng-bind="demo.fullname"></b></static>
+                <editable>
+                  <input type="text" class="form-control" placeholder="Full Name" name="fullname" ng-model="demo.fullname" ng-required="true">
+                </editable>
               </sk-editme>
             </div>
             <!--/.form-group-->
 
             <div class="form-group row">
               <sk-editme>
-                <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
+                <editable>
+                  <input type="text" class="form-control" placeholder="Location" name="location" ng-model="demo.location" ng-required="true">
+                </editable>
               </sk-editme>
             </div>
             <!--/.form-group-->
@@ -57,7 +62,9 @@
               <label class="control-label col-sm-2">Current</label>
               <div class="col-sm-10">
                 <sk-editme>
-                  <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
+                  <editable>
+                    <input type="text" class="form-control" placeholder="Current Position" name="curposition" ng-model="demo.curposition" ng-required="true">
+                  </editable>
                 </sk-editme>
               </div>
             </div>
@@ -67,7 +74,9 @@
               <label class="control-label col-sm-2">Previous</label>
               <div class="col-sm-10">
                 <sk-editme>
-                  <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
+                  <editable>
+                    <input type="text" class="form-control" placeholder="Previous Position" name="prevpostion" ng-model="demo.prevpostion" ng-required="true">
+                  </editable>
                 </sk-editme>
               </div>
             </div>
@@ -77,7 +86,9 @@
               <label class="control-label col-sm-2">Education</label>
               <div class="col-sm-10">
                 <sk-editme>
-                  <input type="text" class="form-control" placeholder="Education" name="test" ng-model="demo.education" ng-required="true">
+                  <editable>
+                    <input type="text" class="form-control" placeholder="Education" name="test" ng-model="demo.education" ng-required="true">
+                  </editable>
                 </sk-editme>
               </div>
             </div>
@@ -96,27 +107,35 @@
 
       <h1 class="form-group">
         <sk-editme>
-          <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h1" ng-required="true">
+          <editable>
+            <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h1" ng-required="true">
+          </editable>
         </sk-editme>
       </h1>
 
       <h2 class="form-group">
         <sk-editme>
-          <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h2" ng-required="true">
+          <editable>
+            <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.h2" ng-required="true">
+          </editable>
         </sk-editme>
       </h2>
 
       <p class="form-group">
         <sk-editme>
-          <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.p" ng-required="true">
+          <editable>
+            <input type="text" class="form-control" placeholder="Enter text here" ng-model="demo.p" ng-required="true">
+          </editable>
         </sk-editme>
       </p>
 
-      <h3>You can use textarea's too</h3>
+      <h3>You can use <code>textarea</code>s too</h3>
 
       <div class="form-group">
         <sk-editme allow-enter-key="true">
-          <textarea class="form-control" rows="8" ng-model="demo.desc" ng-required="true"></textarea>
+          <editable>
+            <textarea class="form-control" rows="8" ng-model="demo.desc" ng-required="true"></textarea>
+          </editable>
         </sk-editme>
       </div>
 

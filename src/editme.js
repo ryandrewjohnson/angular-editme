@@ -49,14 +49,17 @@
         };
       },
       link: link,
-      transclude: true,
+      transclude: {
+        static: '?static',
+        editable: '?editable'
+      },
       template: `
         <div ng-click="toggleEdit(true)" ng-class="{'editme-touch': isTouchEnabled}">
           <span ng-hide="isEditing" class="model-wrapper" ng-class="{'hide-icon': hideIcon}">
-            <span class="model-content" ng-class="{'edit-active': showEditHint}">{{model}}</span>
             <sk-editme-icon ng-class="{'edit-active': showEditHint}" ng-if="!isEditing && !hideIcon"></sk-editme-icon>
+            <span class="model-content" ng-transclude="static">{{model}}</span>
           </span>
-          <content ng-show="isEditing"></content>
+          <div ng-transclude="editable" ng-show="isEditing"></div>
         </div>
       `
     };
@@ -64,15 +67,23 @@
     return directive;
 
     function link(scope, element, attrs, ctrl, transclude) {
-      let $content  = element.find('content');
       let $input    = undefined;
       let ngModel   = undefined;
       let prevValue = undefined;
-      let $static   = angular.element(element[0].querySelector('.model-content'));
       const KEYS    = {
         ENTER: 13
       };
-      const VALID_INPUT_TYPES = ['text', 'url', 'date', 'email', 'week', 'month', 'number', 'time'];
+      const VALID_ELEMENTS = [
+        'input[type="text"]',
+        'input[type="url"]',
+        'input[type="date"]',
+        'input[type="email"]',
+        'input[type="week"]',
+        'input[type="month"]',
+        'input[type="number"]',
+        'input[type="time"]',
+        'textarea'
+      ];
 
       if ('ontouchstart' in document.documentElement) {
         scope.isTouchEnabled = true;
@@ -81,7 +92,6 @@
       scope.showIcon  = scope.showIcon || true;
       scope.allowEnterKey = scope.allowEnterKey || false;
 
-      transclude(transcludeFn);
 
       $static.on('mouseover', () => {
         scope.showEditHint = true;
@@ -93,34 +103,15 @@
         scope.$apply();
       });
 
-      function transcludeFn(clone, innerScope) {
-        const inputTypePattern = new RegExp(VALID_INPUT_TYPES.join('|'), 'gi');
-
+      $timeout(() => {
         // This will ensure only valid elements are matched
-        let input = Array.prototype.filter.call(clone, (el) => {
-          let isInputEl    = el.nodeName.toLowerCase() === 'input';
-          let isTextareaEl = el.nodeName.toLowerCase() === 'textarea';
+        let input = element[0].querySelectorAll(VALID_ELEMENTS.join(','));
 
-          if (isTextareaEl) {
-            return true;
-          }
-
-          if (isInputEl) {
-            let type = el.getAttribute('type') || '';
-            return (type.search(inputTypePattern) > -1);
-          }
-
-          return false;
-        });
-
-        $input = angular.element(input);
-
-        if (!$input.length || $input.length > 1) {
+        if (input.length !== 1) {
           throw new Error('skEditme could not find valid input or textarea element. Please see docs for valid element types.');
         }
 
-        $content.append($compile($input)(innerScope));
-
+        $input = angular.element(input[0]);
         ngModel = $input.controller('ngModel');
 
         if (angular.isUndefined(ngModel)) {
@@ -144,7 +135,7 @@
         ngModel.$viewChangeListeners.push(() => {
           scope.model = ngModel.$modelValue
         });
-      }
+      });
 
       function onIsEditingChange(value) {
         if (value) {
