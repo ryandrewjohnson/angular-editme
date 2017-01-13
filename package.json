@@ -1,6 +1,6 @@
 {
   "name": "angular-editme",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Convert your AngularJS input and textarea elements to be edited inline ala LinkedIn profiles.",
   "homepage": "http://ryandrewjohnson.github.io/angular-editme/",
   "repository": {
