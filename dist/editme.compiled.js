@@ -157,17 +157,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
 
       function validate(evt) {
-        if (evt.type !== 'blur' && evt.keyCode !== KEYS.ENTER) {
-          return;
+        if (evt.type === 'blur' || evt.keyCode === KEYS.ENTER) {
+          scope.isEditing = ngModel.$invalid && ngModel.$dirty;
+          scope.$apply();
+
+          if (ngModel.$error && scope.onInvalid) {
+            scope.onInvalid({ $error: angular.copy(ngModel.$error) });
+          }
         }
-
-        var isEditing = false;
-        var isModelEmpty = angular.isDefined(scope.model) ? scope.model.search(/\w+/g) < 0 : true;
-
-        isEditing = isModelEmpty ? true : ngModel.$ivalid && ngModel.$dirty;
-
-        scope.isEditing = isEditing;
-        scope.$apply();
       }
     }
   });
