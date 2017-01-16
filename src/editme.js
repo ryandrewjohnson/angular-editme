@@ -33,7 +33,7 @@
   })
 
 
-  m.directive('skEditme', ($compile, $timeout) => {
+  m.directive('skEditme', ['$compile', '$timeout', ($compile, $timeout) => {
     let directive = {
       scope : {
         isEditing: '=?',
@@ -177,7 +177,7 @@
         }
       }
     }
-  });
+  }]);
 
   return m.name;
 }));
