@@ -42,11 +42,11 @@
         onInvalid: '&?',
         onChange: '&?'
       },
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.toggleEdit = (value) => {
           $scope.isEditing = (value !== undefined) ? value : !$scope.isEditing;
         };
-      },
+      }],
       link: link,
       transclude: true,
       template: `
