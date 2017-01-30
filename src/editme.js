@@ -38,6 +38,7 @@
       scope : {
         isEditing: '=?',
         hideIcon: '=?',
+        allowEnterKey: '=?',
         onStateChange: '&?',
         onInvalid: '&?',
         onChange: '&?'
@@ -78,6 +79,7 @@
       }
 
       scope.showIcon  = scope.showIcon || true;
+      scope.allowEnterKey = scope.allowEnterKey || false;
 
       transclude(transcludeFn);
 
@@ -167,7 +169,8 @@
       }
 
       function validate(evt) {
-        if (evt.type === 'blur' || evt.keyCode === KEYS.ENTER) {
+        if (evt.type === 'blur' ||
+            (evt.keyCode === KEYS.ENTER && !scope.allowEnterKey)) {
           scope.isEditing = ngModel.$invalid && ngModel.$dirty;
           scope.$apply();
 
