@@ -50,20 +50,23 @@ To convert an existing input element into an editable element wrap it with the `
 <form name="demo">
   ...
   <sk-editme>
-    <input type="text" name="location" ng-model="locale" ng-required="true">
+    <editable>
+      <input type="text" name="location" ng-model="locale" ng-required="true">
+    </editable>
   </sk-editme>
 
-  <sk-editme>
-    <textarea name="description" ng-model="body" ng-required="true"></textarea>
+  <sk-editme allow-enter-key="true">
+    <editable>
+      <textarea name="description" ng-model="body" ng-required="true"></textarea>
+    </editable>
   </sk-editme>
 </form>
 ```
 
-The `<sk-editme>` directive has the following requirements:
+The `<sk-editme>` directive has the following transclusions:
 
-* It must wrap a single `<textarea>` or `<input type="text|url|date|email|week|month|number|time">` element.
-* The element wrapped element must have a valid `ng-model` attirbute.
-
+* (Required) `<editable>` must contain a single `<textarea>` or `<input type="text|url|date|email|week|month|number|time">` element with a valid `ng-model` attribute.
+* (Optional) `<static>` may contain the static version of the editable content.
 
 
 #### Handling invalid input
@@ -76,7 +79,9 @@ Will validate user has entered valid email before exiting edit-state.
 
 ```html
 <sk-editme>
-  <input type="email" name="email" ng-model="email" ng-required="true">
+  <editable>
+    <input type="email" name="email" ng-model="email" ng-required="true">
+  </editable>
 </sk-editme>
 ```
 
@@ -84,7 +89,9 @@ Will validate user has entered only numbers before exiting edit-state.
 
 ```html
 <sk-editme>
-  <input type="text" ng-model="number" name="number" ng-pattern="/\d+/" />
+  <editable>
+    <input type="text" ng-model="number" name="number" ng-pattern="/\d+/" />
+  </editable>
 </sk-editme>
 ```
 
@@ -104,7 +111,12 @@ index.html
   <div class="form-group" ng-class="{'has-error': demo.isInvalid}">
     <label>Email</label>
     <sk-editme on-change="demo.onChange($value)" on-invalid="demo.onInvalid($error)">
-      <input type="email" name="email" ng-model="demo.email">
+      <editable>
+        <input type="email" name="email" ng-model="demo.email">
+      </editable>
+      <static>
+        <code ng-bind="demo.email">
+      </code>
     </sk-editme>
   </div>
 </div>
@@ -146,17 +158,25 @@ All properties are optional.
 <sk-editme
   is-editing="{Boolean}"
   hide-icon="{Boolean}"
+  allow-enter-key="{Boolean}"
   on-change="{Expression}"
   on-invalid="{Expression}"
   on-state-change="{Expression}"
 >
+  <editable>
+    <!-- form element (required) -->
+  </editable>
+  <static>
+    <!-- display version of editable content (optional) -->
+  </static>
 </sk-editme>
 ```
 
 | Name          | Type                 | Description  | Default     |
 | ------------- |:---------------------| -------------| ------------|
 | isEditing     | Boolean              | Can be set to true if you want to start in edit mode | false
-| hideIcon      | Boolean              |  Will hide pencil icon if set to true | false
+| hideIcon      | Boolean              | Will hide pencil icon if set to true | false
+| allowEnterKey | Boolean              | Disables blurring the form when the Enter key is pressed, so that multi-line inputs can be entered | false
 | onChange      | Expression(Function) | Expression will be evaluated when input loses focus and the entered value is both changed and valid. The valid value is available as $value. | –
 | onInvalid     | Expression(Function) | Expression will be evaluated when input loses focus and the entered value is invalid. The ngModel error is available as $error. | –
 | onStateChange | Expression(Function) | Expression will be evaluated when the directive changes to and from edit mode. A Boolean value $isEditing is availble to determine the current state. | –
